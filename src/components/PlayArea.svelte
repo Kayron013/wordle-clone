@@ -1,14 +1,16 @@
 <script lang="ts">
   import { MAX_GUESSES, WORD_LENGTH } from '../constants';
-  import { dictionary } from '../words';
+  import { dictionary, targets } from '../words';
   import Grid from './Grid.svelte';
 
   let attempts: string[] = [];
   let currentAttempt = '';
-  const target = 'train';
+
+  const targetList = [...targets.keys()];
+  const target = targetList[Math.floor(Math.random() * targetList.length)];
 
   const isValid = (guess: string) => {
-    return dictionary.has(guess);
+    return targets.has(guess) || dictionary.has(guess);
   };
 
   $: console.log({ attempts, currentAttempt, target });
