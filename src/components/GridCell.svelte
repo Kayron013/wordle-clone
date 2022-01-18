@@ -1,4 +1,9 @@
-<div class="cell">A</div>
+<script lang="ts">
+  export let status: Status = '';
+  type Status = '' | 'absent' | 'present' | 'correct';
+</script>
+
+<div class="cell {status}"><slot /></div>
 
 <style>
   .cell {
@@ -7,9 +12,22 @@
     align-items: center;
     font-size: 2em;
     font-weight: bold;
-    border: 2px solid var(--clr-darkgray);
+    text-transform: uppercase;
+    border: 2px solid var(--clr-lightgray);
     height: 100%;
     width: 100%;
     padding-bottom: 4px;
+  }
+  .absent {
+    border: none;
+    background-color: var(--clr-darkgray);
+  }
+  .correct {
+    border: none;
+    background-color: var(--clr-darkgreen);
+  }
+  .present {
+    border: none;
+    background-color: var(--clr-darkyellow);
   }
 </style>

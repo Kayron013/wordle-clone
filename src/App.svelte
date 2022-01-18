@@ -31,7 +31,7 @@
     text-transform: uppercase;
     font-size: 3em;
     margin: 10px;
-    border-bottom: 1px solid var(--clr-darkgray);
+    border-bottom: 1px solid var(--clr-lightgray);
   }
 
   @media (min-width: 640px) {
@@ -41,6 +41,9 @@
   }
 
   :root {
-    --clr-darkgray: rgb(88, 88, 88);
+    --clr-lightgray: #585858;
+    --clr-darkgray: #3a3a3c;
+    --clr-darkgreen: #538d4e;
+    --clr-darkyellow: #b59f3b;
   }
 </style>
