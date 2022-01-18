@@ -13,8 +13,6 @@
     return targets.has(guess) || dictionary.has(guess);
   };
 
-  $: console.log({ attempts, currentAttempt, target });
-
   const handleKeydown = (e: KeyboardEvent) => {
     if (attempts.length === MAX_GUESSES) return;
 

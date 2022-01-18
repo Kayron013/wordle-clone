@@ -8,8 +8,6 @@
 
   $: playableRows = MAX_GUESSES - attempts.length;
   $: emptyRows = currentAttempt ? playableRows - 1 : playableRows;
-
-  $: console.log({ emptyRows, playableRows });
 </script>
 
 <div class="container">
