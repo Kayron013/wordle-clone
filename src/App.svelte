@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Grid from './components/Grid.svelte';
+  import PlayArea from './components/PlayArea.svelte';
 </script>
 
 <main>
   <h1>Wordle</h1>
-  <Grid />
+  <PlayArea />
 </main>
 
 <style>

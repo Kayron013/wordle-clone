@@ -1,12 +1,15 @@
-<script>
+<script lang="ts">
+  import { MAX_GUESSES } from '../constants';
   import GridRow from './GridRow.svelte';
 
-  export let attempts = [];
+  export let attempts: string[] = [];
   export let currentAttempt = '';
   export let target = '';
 
-  const playableRows = 6 - attempts.length;
-  const emptyRows = currentAttempt ? playableRows - 1 : playableRows;
+  $: playableRows = MAX_GUESSES - attempts.length;
+  $: emptyRows = currentAttempt ? playableRows - 1 : playableRows;
+
+  $: console.log({ emptyRows, playableRows });
 </script>
 
 <div class="container">
@@ -15,7 +18,7 @@
       <GridRow {attempt} {target} reveal />
     {/each}
     {#if currentAttempt}
-      <GridRow attempt={currentAttempt} />
+      <GridRow attempt={currentAttempt} active />
     {/if}
     {#each Array(emptyRows) as _, i}
       <GridRow />

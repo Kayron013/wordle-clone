@@ -1,15 +1,17 @@
 <script lang="ts">
+  import { WORD_LENGTH } from '../constants';
   import GridCell from './GridCell.svelte';
 
   export let attempt = '';
   export let reveal = false;
   export let target = '';
+  export let active = false;
 
-  const getChar = (i: number) => {
+  $: getChar = (i: number) => {
     return attempt[i] || '';
   };
 
-  const getStatus = (i: number) => {
+  $: getStatus = (i: number) => {
     if (!reveal) return '';
 
     const char = getChar(i);
@@ -23,12 +25,10 @@
   };
 </script>
 
-<div class="grid-row">
-  <GridCell status={getStatus(0)}>{getChar(0)}</GridCell>
-  <GridCell status={getStatus(1)}>{getChar(1)}</GridCell>
-  <GridCell status={getStatus(2)}>{getChar(2)}</GridCell>
-  <GridCell status={getStatus(3)}>{getChar(3)}</GridCell>
-  <GridCell status={getStatus(4)}>{getChar(4)}</GridCell>
+<div class="grid-row {active ? 'active' : ''}">
+  {#each Array(WORD_LENGTH) as _, i}
+    <GridCell status={getStatus(i)}>{getChar(i)}</GridCell>
+  {/each}
 </div>
 
 <style>
