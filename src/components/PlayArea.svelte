@@ -14,11 +14,11 @@
   $: if (attempts[attempts.length - 1] === target) {
     setTimeout(() => {
       alert('You win!');
-    }, 2500);
+    }, 2000);
   } else if (attempts.length === MAX_GUESSES) {
     setTimeout(() => {
       alert(`You lose! The word was ${target}`);
-    }, 2500);
+    }, 2000);
   }
 
   const isValid = (guess: string) => {
