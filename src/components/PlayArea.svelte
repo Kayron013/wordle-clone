@@ -9,7 +9,7 @@
 
   const targetList = [...targets.keys()];
   const target = targetList[Math.floor(Math.random() * targetList.length)];
-  (window as any).target = target;
+  console.log({ target });
 
   $: if (attempts[attempts.length - 1] === target) {
     setTimeout(() => {
