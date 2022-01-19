@@ -16,7 +16,7 @@
       <GridRow {attempt} {target} reveal />
     {/each}
     {#if currentAttempt}
-      <GridRow attempt={currentAttempt} active />
+      <GridRow attempt={currentAttempt} />
     {/if}
     {#each Array(emptyRows) as _}
       <GridRow />

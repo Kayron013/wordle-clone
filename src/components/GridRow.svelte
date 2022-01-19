@@ -5,7 +5,6 @@
   export let attempt = '';
   export let reveal = false;
   export let target = '';
-  export let active = false;
 
   $: getChar = (i: number) => {
     return attempt[i] || '';
@@ -25,7 +24,7 @@
   };
 </script>
 
-<div class="grid-row {active ? 'active' : ''}">
+<div class="grid-row {reveal ? 'reveal' : ''}">
   {#each Array(WORD_LENGTH) as _, i}
     <GridCell status={getStatus(i)} char={getChar(i)} />
   {/each}

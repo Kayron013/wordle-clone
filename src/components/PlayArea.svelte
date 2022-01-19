@@ -9,7 +9,17 @@
 
   const targetList = [...targets.keys()];
   const target = targetList[Math.floor(Math.random() * targetList.length)];
-  (window as any).cheater = target;
+  (window as any).target = target;
+
+  $: if (attempts[attempts.length - 1] === target) {
+    setTimeout(() => {
+      alert('You win!');
+    }, 2500);
+  } else if (attempts.length === MAX_GUESSES) {
+    setTimeout(() => {
+      alert(`You lose! The word was ${target}`);
+    }, 2500);
+  }
 
   const isValid = (guess: string) => {
     return targets.has(guess) || dictionary.has(guess);

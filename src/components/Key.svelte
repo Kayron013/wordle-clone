@@ -1,7 +1,6 @@
 <script lang="ts">
   import Fa from 'svelte-fa';
   import { faBackspace } from '@fortawesome/free-solid-svg-icons';
-  import type { Status } from '../types';
   import { charStores } from '../stores/charStores';
 
   export let key: string;
@@ -20,7 +19,7 @@
   const status = charStores.get(key);
 </script>
 
-<div class="key {$status}" on:click={handleClick}>
+<div class="key {$status} {$status ? 'reveal' : ''}" on:click={handleClick}>
   {#if key === 'backspace'}
     <Fa icon={faBackspace} size="lg" />
   {:else}
@@ -41,6 +40,7 @@
     font-weight: 600;
     padding-bottom: 1px;
     cursor: pointer;
+    transition: background-color 0.2s linear 1.6s;
   }
   .absent {
     background-color: var(--clr-darkgray);
