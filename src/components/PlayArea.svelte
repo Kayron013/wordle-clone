@@ -9,6 +9,7 @@
 
   const targetList = [...targets.keys()];
   const target = targetList[Math.floor(Math.random() * targetList.length)];
+  (window as any).cheater = target;
 
   const isValid = (guess: string) => {
     return targets.has(guess) || dictionary.has(guess);

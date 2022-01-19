@@ -41,8 +41,8 @@
   }
 
   :root {
-    --clr-lightgray: #818384;
-    --clr-gray: #585858;
+    --clr-lightgray: #767777;
+    --clr-gray: #494949;
     --clr-darkgray: #3a3a3c;
     --clr-darkgreen: #538d4e;
     --clr-darkyellow: #b59f3b;

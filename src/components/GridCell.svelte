@@ -1,9 +1,17 @@
 <script lang="ts">
+  import { charStores } from '../stores/charStores';
+
+  import type { Status } from '../types';
+
+  export let char: string = '';
   export let status: Status = '';
-  type Status = '' | 'absent' | 'present' | 'correct';
+
+  $: if (status) {
+    charStores.get(char).update(status);
+  }
 </script>
 
-<div class="cell {status}"><slot /></div>
+<div class="cell {status}">{char}</div>
 
 <style>
   .cell {

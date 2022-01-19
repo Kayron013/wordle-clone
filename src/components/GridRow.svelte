@@ -27,7 +27,7 @@
 
 <div class="grid-row {active ? 'active' : ''}">
   {#each Array(WORD_LENGTH) as _, i}
-    <GridCell status={getStatus(i)}>{getChar(i)}</GridCell>
+    <GridCell status={getStatus(i)} char={getChar(i)} />
   {/each}
 </div>
 
