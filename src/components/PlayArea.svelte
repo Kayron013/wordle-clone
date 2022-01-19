@@ -2,6 +2,7 @@
   import { MAX_GUESSES, WORD_LENGTH } from '../constants';
   import { dictionary, targets } from '../words';
   import Grid from './Grid.svelte';
+  import Keyboard from './Keyboard.svelte';
 
   let attempts: string[] = [];
   let currentAttempt = '';
@@ -15,10 +16,9 @@
 
   const handleKeydown = (e: KeyboardEvent) => {
     if (attempts.length === MAX_GUESSES) return;
-
     const key = e.key.toLowerCase();
 
-    if (key.match(/^[a-z]$/) && currentAttempt.length < WORD_LENGTH) {
+    if (/^[a-z]$/.test(key) && currentAttempt.length < WORD_LENGTH) {
       currentAttempt += key;
     }
 
@@ -40,3 +40,4 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <Grid {attempts} {currentAttempt} {target} />
+<Keyboard />

@@ -13,7 +13,7 @@
     font-size: 2em;
     font-weight: bold;
     text-transform: uppercase;
-    border: 2px solid var(--clr-lightgray);
+    border: 2px solid var(--clr-gray);
     height: 100%;
     width: 100%;
     padding-bottom: 4px;

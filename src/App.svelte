@@ -31,7 +31,7 @@
     text-transform: uppercase;
     font-size: 3em;
     margin: 10px;
-    border-bottom: 1px solid var(--clr-lightgray);
+    border-bottom: 1px solid var(--clr-gray);
   }
 
   @media (min-width: 640px) {
@@ -41,7 +41,8 @@
   }
 
   :root {
-    --clr-lightgray: #585858;
+    --clr-lightgray: #818384;
+    --clr-gray: #585858;
     --clr-darkgray: #3a3a3c;
     --clr-darkgreen: #538d4e;
     --clr-darkyellow: #b59f3b;

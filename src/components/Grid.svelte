@@ -18,21 +18,18 @@
     {#if currentAttempt}
       <GridRow attempt={currentAttempt} active />
     {/if}
-    {#each Array(emptyRows) as _, i}
+    {#each Array(emptyRows) as _}
       <GridRow />
     {/each}
   </div>
 </div>
 
 <style>
-  .container {
-    display: flex;
-    justify-content: center;
-  }
   .grid {
     display: grid;
     grid-template-columns: repeat(1, auto);
     grid-template-rows: repeat(6, auto);
     grid-gap: 5px;
+    justify-content: center;
   }
 </style>
