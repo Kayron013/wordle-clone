@@ -11,7 +11,7 @@
   }
 </script>
 
-<div class="cell {status} {status ? 'reveal' : ''}">{char}</div>
+<div class="cell {char ? 'filled' : ''} {status} {status ? 'reveal' : ''}">{char}</div>
 
 <style>
   .cell {
@@ -35,6 +35,9 @@
   .present {
     --bg-clr: var(--clr-darkyellow);
   }
+  .filled {
+    animation: bump 0.1s linear forwards;
+  }
   .reveal {
     animation: flip 0.6s ease-in-out forwards;
   }
@@ -52,6 +55,19 @@
   }
   .reveal:nth-of-type(5) {
     animation-delay: 1.2s;
+  }
+
+  @keyframes bump {
+    0% {
+      transform: scale(0.93);
+    }
+    50% {
+      transform: scale(1.07);
+    }
+    100% {
+      transform: scale(1);
+      border-color: var(--clr-lightgray);
+    }
   }
 
   @keyframes flip {
