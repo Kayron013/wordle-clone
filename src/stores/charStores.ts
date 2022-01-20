@@ -47,4 +47,6 @@ export const charStores = [
 ].reduce((acc, c) => {
   acc.set(c, createCharStore());
   return acc;
-}, new Map<string, ReturnType<typeof createCharStore>>());
+}, new Map<string, CharStore>());
+
+type CharStore = ReturnType<typeof createCharStore>;

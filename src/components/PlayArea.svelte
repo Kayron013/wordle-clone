@@ -12,7 +12,6 @@
 
   const targetList = [...targets.keys()];
   const target = targetList[Math.floor(Math.random() * targetList.length)];
-  console.log({ target });
 
   $: if (attempts[attempts.length - 1] === target) {
     setTimeout(() => {

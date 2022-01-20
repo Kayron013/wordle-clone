@@ -60,7 +60,6 @@
     }
     50% {
       transform: rotateX(90deg);
-      /* background-color: var(--bg-clr); */
     }
     100% {
       transform: rotateX(0deg);

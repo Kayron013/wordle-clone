@@ -3,7 +3,6 @@
   import GridCell from './GridCell.svelte';
 
   export let attempt = '';
-  export let reveal = false;
   export let target = '';
 
   $: getChar = (i: number) => {
@@ -11,7 +10,7 @@
   };
 
   $: getStatus = (i: number) => {
-    if (!reveal) return '';
+    if (!target) return '';
 
     const char = getChar(i);
     if (char === target[i]) {
@@ -24,7 +23,7 @@
   };
 </script>
 
-<div class="grid-row {reveal ? 'reveal' : ''}">
+<div class="grid-row">
   {#each Array(WORD_LENGTH) as _, i}
     <GridCell status={getStatus(i)} char={getChar(i)} />
   {/each}

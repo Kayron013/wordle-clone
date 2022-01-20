@@ -13,7 +13,7 @@
 <div class="container">
   <div class="grid">
     {#each attempts as attempt}
-      <GridRow {attempt} {target} reveal />
+      <GridRow {attempt} {target} />
     {/each}
     {#if currentAttempt}
       <GridRow attempt={currentAttempt} />
