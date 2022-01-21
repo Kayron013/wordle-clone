@@ -31,5 +31,6 @@
     grid-template-rows: repeat(6, auto);
     grid-gap: 5px;
     justify-content: center;
+    margin: 1em;
   }
 </style>

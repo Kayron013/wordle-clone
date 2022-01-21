@@ -45,7 +45,6 @@
     grid-template-columns: 100%;
     grid-template-rows: repeat(3, 1fr);
     gap: 8px;
-    margin-top: 10px;
   }
   .row {
     display: grid;
@@ -54,12 +53,13 @@
     justify-content: center;
   }
   .row:nth-of-type(1) {
-    grid-template-columns: repeat(10, 45px);
+    grid-template-columns: repeat(10, 1fr);
   }
   .row:nth-of-type(2) {
-    grid-template-columns: repeat(9, 45px);
+    grid-template-columns: repeat(9, 1fr);
+    padding: 0 20px;
   }
   .row:nth-of-type(3) {
-    grid-template-columns: 70px repeat(7, 45px) 70px;
+    grid-template-columns: 1.6fr repeat(7, 1fr) 1.6fr;
   }
 </style>

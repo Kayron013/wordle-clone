@@ -32,8 +32,8 @@
 <style>
   .grid-row {
     display: grid;
-    grid-template-columns: repeat(5, 60px);
-    grid-template-rows: repeat(1, 60px);
+    grid-template-columns: repeat(5, minmax(48px, 8vh));
+    grid-template-rows: repeat(1, minmax(48px, 8vh));
     gap: 5px;
   }
 </style>

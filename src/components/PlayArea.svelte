@@ -57,5 +57,17 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
+<!-- <div class="play-area"> -->
 <Grid {attempts} {currentAttempt} {target} />
 <Keyboard />
+<!-- </div> -->
+
+<!-- <style>
+  .play-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+</style> -->

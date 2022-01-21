@@ -8,36 +8,22 @@
 </main>
 
 <style>
-  :global(*) {
-    box-sizing: border-box;
-  }
-
-  :global(body) {
-    margin: 0;
-    background-color: #121213;
-    color: rgb(212, 212, 212);
-  }
-
   main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     text-align: center;
-    padding: 0 5em;
-    max-width: 240px;
-    margin: 0 auto;
+    height: 100%;
+    width: 500px;
+    padding: 8px;
   }
 
   h1 {
-    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 3em;
-    margin: 10px;
+    font-size: 2.5em;
+    margin: 0;
     border-bottom: 1px solid var(--clr-gray);
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: 100%;
-    }
   }
 
   :root {
