@@ -1,19 +1,12 @@
 <script lang="ts">
   import Fa from 'svelte-fa';
   import { faBackspace } from '@fortawesome/free-solid-svg-icons';
-  import { charStores } from '../stores/charStores';
+  import { charStores } from '../stores';
 
   export let key: string;
-  $: keyCode = /^[a-z]$/.test(key)
-    ? key.toUpperCase().charCodeAt(0)
-    : key === 'backspace'
-    ? 8
-    : key === 'enter'
-    ? 13
-    : null;
 
   $: handleClick = () => {
-    window.dispatchEvent(new KeyboardEvent('keydown', { keyCode, key }));
+    window.dispatchEvent(new KeyboardEvent('keydown', { key }));
   };
 
   const status = charStores.get(key);
@@ -40,6 +33,8 @@
     font-weight: 600;
     padding-bottom: 1px;
     cursor: pointer;
+  }
+  .reveal {
     transition: background-color 0.2s linear 1.6s;
   }
   .absent {

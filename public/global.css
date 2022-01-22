@@ -17,3 +17,11 @@ body {
   color: rgb(212, 212, 212);
   font-family: 'Roboto', sans-serif;
 }
+
+:root {
+  --clr-lightgray: #767777;
+  --clr-gray: #494949;
+  --clr-darkgray: #3a3a3c;
+  --clr-darkgreen: #538d4e;
+  --clr-darkyellow: #b59f3b;
+}

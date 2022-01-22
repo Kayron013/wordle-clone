@@ -1,8 +1,7 @@
 <script lang="ts">
   import { get } from 'svelte/store';
-
   import { MAX_GUESSES, WORD_LENGTH } from '../constants';
-  import { gameState } from '../stores/gameState';
+  import { charStores, gameStore } from '../stores';
   import { dictionary, targets } from '../words';
   import Grid from './Grid.svelte';
   import Keyboard from './Keyboard.svelte';
@@ -11,18 +10,32 @@
   let currentAttempt = '';
 
   const targetList = [...targets.keys()];
-  const target = targetList[Math.floor(Math.random() * targetList.length)];
+  let target = targetList[Math.floor(Math.random() * targetList.length)];
 
+  const reset = () => {
+    attempts = [];
+    currentAttempt = '';
+    charStores.forEach(store => store.reset());
+    target = targetList[Math.floor(Math.random() * targetList.length)];
+  };
+
+  const rowAnimationTime = 2000;
   $: if (attempts[attempts.length - 1] === target) {
     setTimeout(() => {
-      alert('You win!');
-      gameState.set('over');
-    }, 2000);
+      if (confirm('You win!\nPlay again?')) {
+        reset();
+      } else {
+        gameStore.set('over');
+      }
+    }, rowAnimationTime);
   } else if (attempts.length === MAX_GUESSES) {
     setTimeout(() => {
-      alert(`You lose! The word was ${target}`);
-      gameState.set('over');
-    }, 2000);
+      if (confirm(`You lose! The word was ${target}\nPlay again?`)) {
+        reset();
+      } else {
+        gameStore.set('over');
+      }
+    }, rowAnimationTime);
   }
 
   const isValid = (guess: string) => {
@@ -30,7 +43,7 @@
   };
 
   const handleKeydown = (e: KeyboardEvent) => {
-    if (get(gameState) !== 'playing') return;
+    if (get(gameStore) !== 'playing') return;
 
     if (attempts.length === MAX_GUESSES) return;
 
@@ -57,17 +70,5 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<!-- <div class="play-area"> -->
 <Grid {attempts} {currentAttempt} {target} />
 <Keyboard />
-<!-- </div> -->
-
-<!-- <style>
-  .play-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-</style> -->

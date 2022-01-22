@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { charStores } from '../stores/charStores';
+  import { charStores } from '../stores';
 
   import type { Status } from '../types';
 
