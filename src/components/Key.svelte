@@ -12,7 +12,7 @@
   const status = charStores.get(key);
 </script>
 
-<div class="key {$status} {$status ? 'reveal' : ''}" on:click={handleClick}>
+<div class="key {$status ?? ''} {$status ? 'reveal' : ''}" on:click={handleClick}>
   {#if key === 'backspace'}
     <Fa icon={faBackspace} size="lg" />
   {:else}

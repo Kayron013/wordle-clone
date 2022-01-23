@@ -1,17 +1,17 @@
 <script lang="ts">
   import { charStores } from '../stores';
 
-  import type { Status } from '../types';
+  import type { Evaluation } from '../types';
 
   export let char: string = '';
-  export let status: Status = '';
+  export let evaluation: Evaluation;
 
-  $: if (status) {
-    charStores.get(char).update(status);
+  $: if (evaluation) {
+    charStores.get(char).update(evaluation);
   }
 </script>
 
-<div class="cell {char ? 'filled' : ''} {status} {status ? 'reveal' : ''}">{char}</div>
+<div class="cell {char ? 'filled' : ''} {evaluation ?? ''} {evaluation ? 'reveal' : ''}">{char}</div>
 
 <style>
   .cell {

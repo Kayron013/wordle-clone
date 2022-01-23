@@ -1,1 +1,1 @@
-export type Status = '' | 'absent' | 'present' | 'correct';
+export type Evaluation = 'absent' | 'present' | 'correct';

@@ -1,31 +1,19 @@
 <script lang="ts">
   import { WORD_LENGTH } from '../constants';
+  import type { Evaluation } from '../types';
   import GridCell from './GridCell.svelte';
 
   export let attempt = '';
-  export let target = '';
+  export let evaluation: Evaluation[] = [];
 
   $: getChar = (i: number) => {
     return attempt[i] || '';
-  };
-
-  $: getStatus = (i: number) => {
-    if (!target) return '';
-
-    const char = getChar(i);
-    if (char === target[i]) {
-      return 'correct';
-    }
-    if (target.includes(char)) {
-      return 'present';
-    }
-    return 'absent';
   };
 </script>
 
 <div class="grid-row">
   {#each Array(WORD_LENGTH) as _, i}
-    <GridCell status={getStatus(i)} char={getChar(i)} />
+    <GridCell evaluation={evaluation[i]} char={getChar(i)} />
   {/each}
 </div>
 

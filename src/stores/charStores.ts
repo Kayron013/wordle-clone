@@ -1,21 +1,21 @@
 import { writable, get } from 'svelte/store';
 import { statusValues } from '../constants';
-import type { Status } from '../types';
+import type { Evaluation } from '../types';
 
 const createCharStore = () => {
-  const store = writable<Status>('');
+  const store = writable<Evaluation | null>(null);
   const { subscribe, set } = store;
 
   return {
     subscribe,
-    update: (status: Status) => {
+    update: (status: Evaluation) => {
       const oldStatus = get(store);
-      if (statusValues[status] > statusValues[oldStatus]) {
+      if (!oldStatus || statusValues[status] > statusValues[oldStatus]) {
         set(status);
       }
     },
     reset: () => {
-      set('');
+      set(null);
     },
   };
 };

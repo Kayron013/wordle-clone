@@ -1,10 +1,11 @@
 <script lang="ts">
   import { MAX_GUESSES } from '../constants';
+  import type { Evaluation } from '../types';
   import GridRow from './GridRow.svelte';
 
   export let attempts: string[] = [];
+  export let evaluations: Evaluation[][] = [];
   export let currentAttempt = '';
-  export let target = '';
 
   $: playableRows = MAX_GUESSES - attempts.length;
   $: emptyRows = currentAttempt ? playableRows - 1 : playableRows;
@@ -12,8 +13,8 @@
 
 <div class="container">
   <div class="grid">
-    {#each attempts as attempt}
-      <GridRow {attempt} {target} />
+    {#each attempts as attempt, i}
+      <GridRow {attempt} evaluation={evaluations[i]} />
     {/each}
     {#if currentAttempt}
       <GridRow attempt={currentAttempt} />
