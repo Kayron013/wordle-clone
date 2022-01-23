@@ -3,7 +3,7 @@
   import { MAX_GUESSES, WORD_LENGTH } from '../constants';
   import { charStores, gameStore } from '../stores';
   import type { Evaluation } from '../types';
-  import { evaluateAttempt, renderEvaluations } from '../utils';
+  import { evaluateAttempt, exclamations, renderEvaluations } from '../utils';
   import { dictionary, targets } from '../words';
   import Grid from './Grid.svelte';
   import Keyboard from './Keyboard.svelte';
@@ -27,7 +27,8 @@
   $: if (attempts[attempts.length - 1] === target) {
     setTimeout(() => {
       console.log(renderEvaluations(evaluations));
-      if (confirm('You win!\nPlay again?')) {
+      const exclamation = exclamations[attempts.length];
+      if (confirm(`${exclamation}\nPlay again?`)) {
         reset();
       } else {
         gameStore.set('over');
@@ -36,7 +37,8 @@
   } else if (attempts.length === MAX_GUESSES) {
     setTimeout(() => {
       console.log(renderEvaluations(evaluations));
-      if (confirm(`You lose! The word was ${target}\nPlay again?`)) {
+      const exclamation = exclamations[0];
+      if (confirm(`${exclamation}\nThe word was ${target}\nPlay again?`)) {
         reset();
       } else {
         gameStore.set('over');

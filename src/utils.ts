@@ -20,6 +20,16 @@ const evaluationEmojis: Record<Evaluation, string> = {
   absent: '⬛',
 };
 
+export const exclamations = [
+  '😭 Dang! Better luck next time! 😥',
+  '🤯 Holy shit, that was lucky! Or was it... 🤔',
+  '🤩 Alright I see you! Can you do it again though? 😆',
+  '😎 Awesome! 😏',
+  '😀 Nice one! 😃😁',
+  '😌 Alright! 🙂',
+  '😱 Phew! That was close! 😮‍💨',
+];
+
 export const renderEvaluations = (attempts: Evaluation[][]) => {
   const evalGrid = attempts
     .map(attempt => {
@@ -31,5 +41,5 @@ export const renderEvaluations = (attempts: Evaluation[][]) => {
     })
     .join('\n');
 
-  return `${attempts.length}/${MAX_GUESSES}\n${evalGrid}`;
+  return `Wordle - ${attempts.length}/${MAX_GUESSES}\n${evalGrid}`;
 };

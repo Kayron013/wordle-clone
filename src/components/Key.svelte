@@ -33,6 +33,7 @@
     font-weight: 600;
     padding-bottom: 1px;
     cursor: pointer;
+    user-select: none;
   }
   .reveal {
     transition: background-color 0.2s linear 1.6s;
