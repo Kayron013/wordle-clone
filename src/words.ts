@@ -1,5 +1,5 @@
-import _targets from './private/targets.json';
-import _dictionary from './private/dictionary.json';
+import _targets from './words/targets.json';
+import _dictionary from './words/dictionary.json';
 
 export const targets = new Set(_targets);
 
