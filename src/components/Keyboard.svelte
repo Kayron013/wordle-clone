@@ -1,42 +1,37 @@
-<script>
+<script lang="ts">
   import Key from './Key.svelte';
+
+  let pressedKey = '';
+
+  $: isKeyPressed = (key: string) => {
+    return pressedKey == key;
+  };
+
+  const handleKeydown = (e: KeyboardEvent) => {
+    pressedKey = e.key;
+  };
+
+  const handleKeyup = () => {
+    pressedKey = '';
+  };
+
+  const keyRows = [
+    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+    ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Backspace'],
+  ];
 </script>
 
+<svelte:window on:keydown={handleKeydown} on:keyup={handleKeyup} on:blur={handleKeyup} />
+
 <div class="keyboard">
-  <div class="row">
-    <Key key="q" />
-    <Key key="w" />
-    <Key key="e" />
-    <Key key="r" />
-    <Key key="t" />
-    <Key key="y" />
-    <Key key="u" />
-    <Key key="i" />
-    <Key key="o" />
-    <Key key="p" />
-  </div>
-  <div class="row">
-    <Key key="a" />
-    <Key key="s" />
-    <Key key="d" />
-    <Key key="f" />
-    <Key key="g" />
-    <Key key="h" />
-    <Key key="j" />
-    <Key key="k" />
-    <Key key="l" />
-  </div>
-  <div class="row">
-    <Key key="enter" />
-    <Key key="z" />
-    <Key key="x" />
-    <Key key="c" />
-    <Key key="v" />
-    <Key key="b" />
-    <Key key="n" />
-    <Key key="m" />
-    <Key key="backspace" />
-  </div>
+  {#each keyRows as rowKeys}
+    <div class="row">
+      {#each rowKeys as key}
+        <Key {key} isPressed={isKeyPressed(key)} />
+      {/each}
+    </div>
+  {/each}
 </div>
 
 <style>

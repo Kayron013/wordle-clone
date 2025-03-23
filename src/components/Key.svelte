@@ -4,16 +4,20 @@
   import { charStores } from '../stores';
 
   export let key: string;
+  export let isPressed: boolean;
 
   $: handleClick = () => {
     window.dispatchEvent(new KeyboardEvent('keydown', { key }));
+    setTimeout(() => {
+      window.dispatchEvent(new KeyboardEvent('keyup', { key }));
+    }, 200);
   };
 
   const status = charStores.get(key);
 </script>
 
-<div class="key {$status ?? ''} {$status ? 'reveal' : ''}" on:click={handleClick}>
-  {#if key === 'backspace'}
+<div class="key {$status ?? ''} {$status ? 'reveal' : ''} {isPressed ? 'pressed' : ''}" on:click={handleClick}>
+  {#if key === 'Backspace'}
     <Fa icon={faBackspace} size="lg" />
   {:else}
     {key}
@@ -35,8 +39,11 @@
     cursor: pointer;
     user-select: none;
   }
-  .key:hover {
+  .key:not(.pressed):hover {
     filter: brightness(0.8);
+  }
+  .pressed {
+    filter: brightness(0.6);
   }
   .reveal {
     transition: background-color 0.2s linear 1.6s;
