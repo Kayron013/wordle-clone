@@ -35,6 +35,9 @@
     cursor: pointer;
     user-select: none;
   }
+  .key:hover {
+    filter: brightness(0.8);
+  }
   .reveal {
     transition: background-color 0.2s linear 1.6s;
   }
